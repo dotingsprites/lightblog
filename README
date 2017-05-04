@@ -1,0 +1,49 @@
+About This Project
+
+This is a small Python blogging application. It is meant for those who want a
+small customizable blogging platform that can be hosted cheaply on a VPS or 
+old hardware. Currently, the project only consists of around 500 lines of
+code, so it is easy to understand and customize. There is a high level 
+description of how it works at
+
+  https://www.dtsblog.net/creating-a-blog
+
+This document will describe how to get the software running and how to use it.
+
+Installation
+
+This project was written with MySQL/MariaDB, python3, and mysql-connector, so
+be sure to install these first. MySQL and python3 should be installed through
+whatever package manager you use, and to get mysql-connector you should install
+pip too. After you have the database installed, log into it as root and run
+init.sql with
+
+  \. init.sql
+
+This application can be used with any web server that supports CGI, so all that
+needs to be done is drop the blog.py file with executable permissions set into
+a directory from which the web server is configured to execute CGI scripts. On
+systems using Apache, this directory will either be /var/www/cgi-bin/ on CentOS 
+or /usr/lib/cgi-bin/ on Debian. There are some minimal HTML templates included.
+In the default configuration, these should be put in /var/www/, but they can be
+put anywhere that your web server has read permission. If you'd like to change
+where the templates are put, see they configuration options at the top of 
+blog.py. Be sure to also drop the wordlist file into the same directory for
+the contact info page to work correctly.
+
+How to write posts
+
+The script post.py is used to submit posts to the database, but it's primary
+purpose is to convert a small markup language created for this project into 
+HTML. This section describes how to use post.py and its markup language. 
+
+Like HTML, post.py makes use of tags with similar syntax. There are two kinds
+of tags: block level and line level. Block level tags encapslate a piece of 
+text. The beginning and end tags of block level elements must be the only text
+on a line with no other whitespace than a new line after the tag. Line level
+elements are contained in block level elements. See sample.mml for an example
+of this markup language. You can run 
+
+  ./post.py -p sample.mml
+
+to see how everything translates into HTML.

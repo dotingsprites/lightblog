@@ -1,0 +1,20 @@
+{h}
+This is a header. A header is block level element.
+{h}
+
+{p}
+This is a paragraph.
+A paragraph is block level element.
+This line {l|www.google.com}contains{l} a link to Goole.
+This is an image: {im|/path/to/image.jpg}some alt text{im}
+This is some {ic}inline{ic} code.
+Here's some italic text: {i}italic text!{i}
+Here's some bold text: {b}bold text!{b}
+All of the above tags are line level elements and can only occur in lists and paragraphs.
+{p}
+
+{l}
+This is a list.
+Lists are block level elements.
+Each item on a list must be have a newline after it.
+{l}
